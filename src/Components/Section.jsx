@@ -1,14 +1,15 @@
-//! Get rid of all props except 'children' and 'label'
+import { useDogContext } from "../dogs.context";
+
 export const Section = ({
   label, // do not delete
   children, // do not delete
-  onClickFavorited,
-  onClickUnfavorited,
-  onClickCreateDog,
-  showComponent,
-  favoriteDogCount,
-  unfavoriteDogCount,
 }) => {
+  const {
+    activeTab,
+    onClickChangeActiveTab,
+    favoriteDogCount,
+    unfavoriteDogCount,
+  } = useDogContext();
   return (
     <section>
       <div className="container-header">
@@ -16,10 +17,8 @@ export const Section = ({
         <div className="selectors">
           {/* This should display the favorited count */}
           <div
-            className={`selector ${
-              showComponent === "favorite-dogs" && "active"
-            }`}
-            onClick={onClickFavorited}
+            className={`selector ${activeTab === "favorite-dogs" && "active"}`}
+            onClick={() => onClickChangeActiveTab("Favorited Dogs:")}
           >
             favorited ( {favoriteDogCount} )
           </div>
@@ -27,17 +26,17 @@ export const Section = ({
           {/* This should display the unfavorited count */}
           <div
             className={`selector ${
-              showComponent === "unfavorite-dogs" && "active"
+              activeTab === "unfavorite-dogs" && "active"
             }`}
-            onClick={onClickUnfavorited}
+            onClick={() => onClickChangeActiveTab("Unfavorited Dogs:")}
           >
             unfavorited ( {unfavoriteDogCount} )
           </div>
           <div
             className={`selector ${
-              showComponent === "create-dog-form" && "active"
+              activeTab === "create-dog-form" && "active"
             }`}
-            onClick={onClickCreateDog}
+            onClick={() => onClickChangeActiveTab("Create A Dog:")}
           >
             create dog
           </div>

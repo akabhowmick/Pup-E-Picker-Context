@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { dogPictures } from "../assets/dog-pictures";
+import { useDogContext } from "../dogs.context";
 
 // Todo: Get rid of Add Dog from Props
-export const CreateDogForm = ({
-  // ! Get rid of this from props
-  addDog,
-}) => {
+export const CreateDogForm = () => {
+  const { addDog } = useDogContext();
   const [nameInput, setNameInput] = useState(""); //! This state must stay, don't try and move it to context
   const [descriptionInput, setDescriptionInput] = useState(""); //! This state must stay, don't try and move it to context
   const [selectedImage, setSelectedImage] = useState(dogPictures.BlueHeeler); //! This state must stay, don't try and move it to context
@@ -16,11 +15,12 @@ export const CreateDogForm = ({
       id="create-dog-form"
       onSubmit={(e) => {
         e.preventDefault();
-        addDog({
+        const newDogToDB = {
           name: nameInput,
           description: descriptionInput,
           image: selectedImage,
-        });
+        };
+        addDog(newDogToDB);
         setDescriptionInput("");
         setNameInput("");
         setSelectedImage(dogPictures.BlueHeeler);
