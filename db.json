@@ -1,24 +1,17 @@
 {
   "dogs": [
     {
-      "name": "Jalon",
-      "image": "/src/assets/blue-heeler.png",
-      "description": "Innovative Money Tuna Palladium Handmade Tricycle versus black",
-      "isFavorite": true,
-      "id": 7
-    },
-    {
       "name": "Juanita",
       "image": "/src/assets/dalmation.png",
       "description": "redefine online feed bus unaccountably Hybrid Turnpike",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 9
     },
     {
       "name": "Laurine",
       "image": "/src/assets/corgi.png",
       "description": "Sausages pfft Rolls navigating male",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 18
     },
     {
@@ -27,6 +20,20 @@
       "isFavorite": true,
       "image": "/src/assets/blue-heeler.png",
       "id": 20
+    },
+    {
+      "name": "zen",
+      "description": "Good boy",
+      "isFavorite": false,
+      "image": "/src/assets/blue-heeler.png",
+      "id": 21
+    },
+    {
+      "name": "jey",
+      "description": "is not a good boy",
+      "isFavorite": false,
+      "image": "/src/assets/chihuahua.avif",
+      "id": 22
     }
   ]
 }

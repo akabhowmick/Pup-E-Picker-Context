@@ -8,7 +8,20 @@ const DogContext = createContext({});
 export const DogProvider = ({ children }) => {
   const [dogs, setDogs] = useState([]);
   const [activeTab, setActiveTab] = useState("Dogs:");
-  const [dogsToDisplay, setDogsToDisplay] = useState(dogs);
+
+  const dogsToDisplay = dogs.filter((dog) =>{
+    if(activeTab === "Dogs:"){
+      return true;
+    } else if(activeTab === "Favorited Dogs:"){
+      if(dog.isFavorite){
+        return true;
+      }
+    } else if (activeTab === "Unfavorited Dogs:"){
+      if(!dog.isFavorite){
+        return true;
+      }
+    }
+  });
 
   const favoriteDogCount = dogs.filter((dog) => dog.isFavorite).length;
   const unfavoriteDogCount = dogs.length - favoriteDogCount;
@@ -30,28 +43,6 @@ export const DogProvider = ({ children }) => {
   useEffect(() => {
     refetchDogs();
   }, []);
-
-  useEffect(() => {
-    if (activeTab === "Favorited Dogs:") {
-      let favDogs = [];
-      dogs.forEach((dog) => {
-        if (dog.isFavorite) {
-          favDogs.push(dog);
-        }
-      });
-      setDogsToDisplay(favDogs);
-    } else if (activeTab === "Unfavorited Dogs:") {
-      let unFavDogs = [];
-      dogs.forEach((dog) => {
-        if (!dog.isFavorite) {
-          unFavDogs.push(dog);
-        }
-      });
-      setDogsToDisplay(unFavDogs);
-    } else if (activeTab === "Dogs:") {
-      setDogsToDisplay(dogs);
-    }
-  }, [activeTab, dogs]);
 
   const addDog = (dog) => {
     addDogToDb({
