@@ -59,8 +59,8 @@ export const DogProvider = ({ children }) => {
     deleteDogFromDb(dogId).then(() => refetchDogs());
   };
 
-  const toggleFavoriteDog = (dogId, isFavorite) => {
-    updateFavoriteForDog({ dogId, isFavorite: !isFavorite });
+  const toggleFavoriteDog = async (dogId, isFavorite) => {
+    await updateFavoriteForDog({ dogId, isFavorite: !isFavorite });
     refetchDogs();
   };
 

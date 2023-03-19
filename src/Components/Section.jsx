@@ -17,7 +17,7 @@ export const Section = ({
         <div className="selectors">
           {/* This should display the favorited count */}
           <div
-            className={`selector ${activeTab === "favorite-dogs" && "active"}`}
+            className={`selector ${activeTab === "Favorited Dogs:" && "active"}`}
             onClick={() => onClickChangeActiveTab("Favorited Dogs:")}
           >
             favorited ( {favoriteDogCount} )
@@ -26,7 +26,7 @@ export const Section = ({
           {/* This should display the unfavorited count */}
           <div
             className={`selector ${
-              activeTab === "unfavorite-dogs" && "active"
+              activeTab === "Unfavorited Dogs:" && "active"
             }`}
             onClick={() => onClickChangeActiveTab("Unfavorited Dogs:")}
           >
@@ -34,7 +34,7 @@ export const Section = ({
           </div>
           <div
             className={`selector ${
-              activeTab === "create-dog-form" && "active"
+              activeTab === "Create A Dog:" && "active"
             }`}
             onClick={() => onClickChangeActiveTab("Create A Dog:")}
           >
